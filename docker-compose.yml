@@ -1,0 +1,16 @@
+version: '2'
+services:
+  homebridge:
+    image: oznu/homebridge:latest
+    container_name: homebridge
+    restart: always
+    network_mode: host
+    environment:
+      - TZ=Asia/Tokyo
+      - PGID=1000
+      - PUID=1000
+      - HOMEBRIDGE_CONFIG_UI=1
+      - HOMEBRIDGE_CONFIG_UI_PORT=8080
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./homebridge:/homebridge
